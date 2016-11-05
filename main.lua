@@ -9,10 +9,10 @@ end
 function love.update (dt)
   time = time + dt
 
-  --P.y = (math.sin(time)+1)*100
+  P.y = (math.sin(time)+1)*100
 
-  E.x = a*P.x/(a+P.y)
-  E.y = a*P.x/(a+P.y)
+  E.x = a*P.x/(a+P.z)
+  E.y = a*P.y/(a+P.z)
 end
 
 function love.draw ()
@@ -20,4 +20,6 @@ function love.draw ()
   love.graphics.scale(1, -1)
 
 
+  love.graphics.line(0,E.y, E.x,E.y, E.x,0)
+  love.graphics.circle("fill", E.x, E.y, 4)
 end
