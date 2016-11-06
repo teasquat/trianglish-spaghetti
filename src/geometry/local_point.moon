@@ -22,7 +22,7 @@ export class Local_Point extends Point
 
   get_N: (n, pos) =>
     unless pos
-      pos = [v*@group.scale+@group.offset[i] for i, v in ipairs @pos]
+      pos = @\get_global_pos!
 
     if #pos <= n
       return pos
