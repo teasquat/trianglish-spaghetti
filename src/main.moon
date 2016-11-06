@@ -1,21 +1,8 @@
+require "geometry"
+
 local time, P, E
 
-a = 50
-
-class Point
-  radius = 4
-
-  new: (@x, @y, @z) =>
-
-  set_pos: (@x, @y, @z) =>
-
-  get_2d: =>
-    l = a + @z
-    {a * @x / l, a * @y / l}
-
-  draw: =>
-    {x, y} = @get_2d!
-    love.graphics.circle "fill", x, y, radius
+export a = 50
 
 class Cube
   new: (@x, @y, @z, @l) =>
@@ -24,7 +11,7 @@ class Cube
     for x = 0, 1
       for y = 0, 1
         for z = 0, 1
-          table.insert(@points, Point(@l*x+@x, @l*y+@y, @l*z+@z))
+          table.insert @points, Point @l * x + @x, @l * y + @y, @l * z + @z
 
   update: =>
     @points = {}
@@ -32,10 +19,11 @@ class Cube
     for x = 0, 1
       for y = 0, 1
         for z = 0, 1
-          table.insert(@points, Point(@l*x+@x, @l*y+@y, @l*z+@z))
+          table.insert @points, Point @l * x + @x, @l * y + @y, @l * z + @z
 
   draw: =>
     for point in *@points
+      print point.pos[1], point.pos[2], "yo?"
       point\draw!
 
 love.load = ->
