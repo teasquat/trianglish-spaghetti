@@ -31,7 +31,7 @@ v 1.0  1.0  1.0  1.0"
 
 love.update = (dt) ->
   time += dt
-  cube.offset = math.sin(time)*100
+  cube.offset[1] = math.sin(time)*100
   cube.scale = math.cos(time)*100
 
 love.draw = ->
