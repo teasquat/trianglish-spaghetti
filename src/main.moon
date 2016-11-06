@@ -7,7 +7,7 @@ export a = 500
 
 love.load = ->
 
-  data = love.filesystem.read("res/cube.wtf")
+  data = love.filesystem.read("res/hypercube.wtf")
 
   test = Loader\load data
   cube = Group test.v, 100
