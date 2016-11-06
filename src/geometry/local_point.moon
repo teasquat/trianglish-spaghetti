@@ -14,6 +14,11 @@ export class Local_Point extends Point
           primes[i] = a * v / l
     primes
 
+  get_global_pos: (pos) =>
+    if pos
+      [v*@group.scale+@group.offset[i] for i, v in ipairs pos]
+    else
+      [v*@group.scale+@group.offset[i] for i, v in ipairs @pos]
 
   get_N: (n, pos) =>
     unless pos
