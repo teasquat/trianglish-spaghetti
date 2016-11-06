@@ -2,7 +2,7 @@ require "geometry"
 
 local time, P, E
 
-export a = 50
+export a = 500
 
 class Cube
   new: (@x, @y, @z, @l) =>
@@ -23,7 +23,6 @@ class Cube
 
   draw: =>
     for point in *@points
-      print point.pos[1], point.pos[2], "yo?"
       point\draw!
 
 love.load = ->
