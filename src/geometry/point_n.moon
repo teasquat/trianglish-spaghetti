@@ -48,9 +48,7 @@ export class Point
         l = a + pos[#pos]
         if i < #pos
           primes[i] = a * v / l
-          print(i,#pos)
     primes
-
 
   ----------------------------------
   -- Method for getting points
@@ -64,8 +62,7 @@ export class Point
       @\get_N(n, @\get_N1(pos)) --get the one below it
 
   draw: =>
-    pos = @\get_N(2)
-    print(pos, pos[1], pos[2])
+    pos = @\get_N(1)
     x, y = pos[1], pos[2] or 0
 
     love.graphics.circle "fill", x, y, 4
