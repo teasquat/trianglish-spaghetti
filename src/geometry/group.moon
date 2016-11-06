@@ -3,6 +3,21 @@ export class Group
     @scale = scale
     @offset = [0 for i in *points] --table filled with as many 0s as points has points
 
+    @rotations = {
+        {(math.cos test_a), -(math.sin test_a), 0, 0}
+        {(math.sin test_a), (math.cos test_a), 0, 0}
+        {0, 0, 1, 0}
+        {0, 0, 0, 1}
+    } -- rotation matrix N
+    -- for x = 1, #points[1] -- construct 2D matrix of N rotations
+    --   ax = {}
+    --   for y = 1, #points[1]
+    --     ax[#ax + 1] = 0
+    --     if x == y
+    --       ax[#ax] = 1
+    --   @rotations[#@rotations + 1] = ax
+
+
     @points = [Local_Point(@, v) for i, v in ipairs(points)]
     @lines = {}
 
