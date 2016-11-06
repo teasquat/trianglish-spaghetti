@@ -1,12 +1,9 @@
 export class Group
   new: (points, scale=1, offset=0) =>
     @scale = scale
-    @offset = offset
+    @offset = [0 for i in *points] --table filled with as many 0s as points has points
 
-    @points = {}
-    --@points = [Local_Point(@, v) for v in *points]
-    for i, v in ipairs(points)
-      @points[i] = Local_Point(@, v)
+    @points = [Local_Point(@, v) for i, v in ipairs(points)]
 
   draw: =>
     for v in *@points
