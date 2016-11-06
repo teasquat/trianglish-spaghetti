@@ -88,8 +88,8 @@ l 8 8"
 
 love.update = (dt) ->
   time += dt
-  cube.offset[1] = math.sin(time)*100
-  cube.scale = math.cos(time)*100
+  cube.offset[2] = math.sin(time) * 200
+  cube.offset[1] = math.cos(time) * 200
 
 love.draw = ->
   love.graphics.translate love.graphics.getWidth! / 2, love.graphics.getHeight! / 2
