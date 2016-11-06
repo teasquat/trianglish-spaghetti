@@ -7,15 +7,15 @@
 --
 -- p = <Point> x, y, z, w, ...
 ----------------------------------
-class
+export class Point
   new: (...) =>
-    @pos = table.pack ...
+    @pos = {...}
 
   ----------------------------------
   -- *Teleports* point to given coordinates.
   ----------------------------------
   move: (...) =>
-    new_pos = table pack ...
+    new_pos = {...}
 
     assert #new_pos == #@pos
     @pos = new_pos
@@ -24,7 +24,7 @@ class
   -- Translates point by given deltas.
   ----------------------------------
   translate: (...) =>
-    delta = table.pack ...
+    delta = {...}
 
     assert #delta == #@pos
 
@@ -42,12 +42,14 @@ class
   -- two-dimensional plane.
   ----------------------------------
   get_2D: (primes) =>
-    l = a + @z
-
-    {
-      a * @x / l
-      a * @y / l
-    }
+    ----------------------------------
+    -- Approaching recursive projection.
+    -- Projecting N-1 primes(projections).
+    ----------------------------------
+    if #primes == 2
+      return primes
+    else
+      @\get_N1 primes
 
   ----------------------------------
   -- Fancy method for projecting point in
@@ -57,16 +59,20 @@ class
     primes = {} -- e.g. x' = (ax)/(a+z) ...
 
     for i, v in ipairs @pos
-      if i < #@pos
-        l = a + @pos[i + 1]
-        -- only x' and y' are calculated with shared scalar
-        unless i > 2
+        l = a + @pos[#@pos]
+        if i < #@pos
           l = a + @pos[3]
 
-        primes[i] = a * v / l
+          primes[i] = a * v / l
 
     primes
 
   draw: =>
-    {x, y} = @get_2d!
-    love.graphics.circle "fill", x, y, radius
+    pos = @get_2D @pos
+    x, y = pos[1], pos[2]
+
+    love.graphics.circle "fill", x, y, 4
+
+{
+  :Point
+}

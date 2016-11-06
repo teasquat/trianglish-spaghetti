@@ -1,3 +1,3 @@
 run:
 	moonc .
-	love .
+	love src

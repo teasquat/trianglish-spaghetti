@@ -1,7 +1,3 @@
-path = "src/geometry/"
+path = "geometry/"
 
-Point = require path .. "point_n"
-
-{
-  :Point
-}
+require path .. "point_n"

@@ -1,8 +1,8 @@
-import Point from require "geometry"
+require "geometry"
 
 local time, P, E
 
-a = 50
+export a = 50
 
 class Cube
   new: (@x, @y, @z, @l) =>
@@ -11,7 +11,7 @@ class Cube
     for x = 0, 1
       for y = 0, 1
         for z = 0, 1
-          table.insert(@points, Point(@l*x+@x, @l*y+@y, @l*z+@z))
+          table.insert @points, Point @l * x + @x, @l * y + @y, @l * z + @z
 
   update: =>
     @points = {}
@@ -19,10 +19,11 @@ class Cube
     for x = 0, 1
       for y = 0, 1
         for z = 0, 1
-          table.insert(@points, Point(@l*x+@x, @l*y+@y, @l*z+@z))
+          table.insert @points, Point @l * x + @x, @l * y + @y, @l * z + @z
 
   draw: =>
     for point in *@points
+      print point.pos[1], point.pos[2], "yo?"
       point\draw!
 
 love.load = ->
